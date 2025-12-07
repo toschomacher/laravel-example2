@@ -1,0 +1,25 @@
+{
+  "name": "Laravel PHP Development",
+  // Use a pre-built PHP/Composer/Node image
+  "image": "mcr.microsoft.com/devcontainers/php:8.3",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "felixfbecker.php-debug",
+        "bmewburn.vscode-intelephense-client",
+        "mikestead.dotenv",
+        "amiralizadeh9480.laravel-extra-intellisense"
+      ]
+    }
+  },
+
+  // Port forwarding for the Laravel dev server
+  "forwardPorts": [8000],
+
+  // Run commands after the container is created
+  "postCreateCommand": "composer global require laravel/installer && php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+
+  // Automatically run Laravel when the Codespace opens (optional)
+  "postAttachCommand": "php artisan serve --host 0.0.0.0 --port 8000"
+}
