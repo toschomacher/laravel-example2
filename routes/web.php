@@ -10,13 +10,13 @@ Route::get('/', function ()
 );
 Route::get('/jobs', function(){
         return view('jobs', [
-            'jobs' => Job::allJobs()
+            'jobs' => Job::all()
         ]);
     }
 );
 
 Route::get('/jobs/{id}', function($id) { //when laravel sees something in {} it knows it's a wild card
-        $job = Job::findJob($id);
+        $job = Job::find($id);
         return view('job',['job' => $job]);
     }
 );

@@ -1,7 +1,9 @@
 {
   "name": "Laravel PHP Development",
   // Use a pre-built PHP/Composer/Node image
-  "image": "mcr.microsoft.com/devcontainers/php:8.3",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
 
   "customizations": {
     "vscode": {
@@ -19,7 +21,6 @@
 
   // Run commands after the container is created
   "postCreateCommand": "composer global require laravel/installer && php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-
   // Automatically run Laravel when the Codespace opens (optional)
   "postAttachCommand": "php artisan serve --host 0.0.0.0 --port 8000"
 }
